@@ -1,0 +1,146 @@
+:root {
+    --primary: #009c34;
+    --red: #ef4444;
+    --text: #009c34;
+    --shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+body {
+    background: #f1f5f9;
+    color: var(--text);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+
+     /* BACKGROUND TEMA RUANGAN MEDIS */
+    background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    padding: 10px;
+}
+
+/* Animasi Card (TikTok Style) */
+.card {
+    background: white;
+    padding: 17px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    width: 100%;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+}
+
+.card.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    position: relative;
+    pointer-events: all;
+}
+
+.card.out {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+}
+
+.hidden { display: none; }
+
+/* UI Elements */
+.hero-icon { font-size: 60px; margin-bottom: 15px; }
+input {
+    width: 100%;           /* Mengambil lebar penuh kontainer */
+    max-width: 350px;      /* Atur angka ini untuk memanjangkan kotak (misal 350px atau 400px) */
+    display: block;        /* Memastikan input berdiri sendiri di baris baru */
+    margin: 10px auto;     /* Memberi jarak atas-bawah dan membuatnya ke tengah */
+    padding: 12px;         /* Memberi ruang di dalam kotak agar teks tidak mepet */
+    box-sizing: border-box; /* SANGAT PENTING: Agar padding tidak merusak lebar kotak */
+}
+input:focus { border-color: var(--primary); }
+
+button {
+    width: 100%; padding: 14px; border: none; border-radius: 10px;
+    font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px;
+}
+.btn-main { background: var(--primary); color: white; }
+.btn-red { background: var(--red); color: white; }
+.btn-grey { background: #cbd5e1; }
+.btn-link { background: transparent; color: #64748b; }
+button:active { transform: scale(0.95); }
+
+.cat-title {
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #4caf50; /* Warna hijau sesuai gambar */
+    border-bottom: 2px solid #4caf50; /* Garis bawah hijau */
+    padding-bottom: 5px;
+}
+/* Symptom Selection */
+.symptom-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Memaksa semua item mulai dari pinggir kiri */
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.cat-title {
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #4caf50;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 5px;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Merapatkan kotak & teks ke kiri */
+    gap: 12px;
+    padding: 8px 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.check-item label {
+    margin: 0;
+    text-align: left;
+    color: #333; /* Gunakan warna gelap jika background kartu putih */
+    cursor: pointer;
+    flex: none; 
+}
+
+.check-item input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0; /* Menghapus margin bawaan browser agar tidak lari */
+    cursor: pointer;
+}
+/* Struk */
+.receipt-frame { border: 2px dashed #000; padding: 20px; margin-bottom: 15px; background: #fff; }
+.number-tag { font-size: 50px; font-weight: 900; color: var(--primary); margin: 15px 0; }
+.qr-center { display: flex; justify-content: center; padding: 10px; }
+.error-msg { color: var(--red); font-size: 12px; margin-top: 5px; } 

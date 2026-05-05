@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puskesmas Bina Sehat</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="step-start" class="card active">
+            <div class="hero-icon">🏥</div>
+            <h1>Puskesmas Bina Sehat</h1>
+            <p>Silakan klik tombol di bawah untuk mendaftar antrian hari ini.</p>
+            <button class="btn-main" onclick="goToStep('step-start', 'step-input')">Mulai Daftar</button>
+            <button class="btn-link" onclick="location.reload()">Keluar</button>
+            <marquee behavior="scroll" direction="left" style="color: rgb(0, 0, 0); font-weight: bold; margin-top: auto; padding-bottom: 20px; width: 100%;">
+            Layanan Jam Operasional Puskesmas Bina Sehat: Senin - Jum'at | 07.00 - 22.00 WIB
+    </marquee>
+
+</body>
+        </div>
+
+        <div id="step-input" class="card hidden">
+            <h2>Identitas Pasien</h2>
+            <div class="input-box">
+                <label>Nama Lengkap</label>
+                <input type="text" id="nama" placeholder="Minimal 4 huruf...">
+            </div>
+            <div class="input-box">
+                <label>Umur</label>
+                <input type="number" id="umur" placeholder="1 - 100">
+            </div>
+            <p id="error-box" class="error-msg hidden"></p>
+            <button class="btn-main" onclick="checkInput()">Lanjut</button>
+        </div>
+
+        <div id="step-emergency" class="card hidden">
+            <h2>Status Darurat?</h2>
+            <p>Pasien sesak napas, pendarahan hebat, atau pingsan?</p>
+            <button class="btn-red" onclick="finalProcess('emergency')">YA, DARURAT</button>
+            <button class="btn-grey" onclick="goToStep('step-emergency', 'step-symptoms')">TIDAK</button>
+        </div>
+
+        <div id="step-symptoms" class="card hidden">
+            <h2>Pilih Gejala</h2>
+            <div id="list-gejala" class="symptom-list"></div>
+            <button class="btn-main" onclick="finalProcess('regular')">Cetak Struk</button>
+        </div>
+
+        <div id="step-result" class="card hidden">
+            <div id="printable-area" class="receipt-frame">
+                <h3>PUSKESMAS BINA SEHAT</h3>
+                <hr>
+                <div class="info"><span>Pasien:</span> <strong id="res-nama"></strong></div>
+                <div class="info"><span>Poli:</span> <strong id="res-poli"></strong></div>
+                <div class="number-tag" id="res-nomor"></div>
+                <div id="qr-code-box" class="qr-center"></div>
+                <p class="date-txt">Waktu: <span id="res-date"></span></p>
+            </div>
+            <button class="btn-main" onclick="saveAsPDF()">Unduh / Simpan PDF</button>
+            <button class="btn-link" onclick="location.reload()">Selesai</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
